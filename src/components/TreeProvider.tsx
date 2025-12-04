@@ -16,9 +16,8 @@ interface TreeProviderProps {
   children: ReactNode;
 }
 
-const TreeProvider = ({ children }: TreeProviderProps) => {
-  const [tree] = useState<Tree>(() => {
-    const newTree = new Tree();
+const createDefaultTree = (): Tree => {
+  const newTree = new Tree();
     
     // Initialize tree with sample nodes containing text data
     const rootNode = newTree.setRoot({
@@ -58,59 +57,35 @@ const TreeProvider = ({ children }: TreeProviderProps) => {
       room2.id
     );
 
-    const room5 = newTree.addNode(
-      {
-        id: 'room5',
-        text: 'You enter a magical workshop. Strange artifacts hum with energy on workbenches. A glowing crystal pulses in the center.',
-      },
-      room3.id
-    );
-
-    const room6 = newTree.addNode(
-      {
-        id: 'room6',
-        text: 'A narrow passageway leads deeper underground. The walls are covered in ancient runes that seem to shift and move.',
-      },
-      room1.id
-    );
-
-    const room7 = newTree.addNode(
-      {
-        id: 'room7',
-        text: 'You discover a hidden chamber with a massive stone door. Mysterious symbols are carved into its surface. It feels significant.',
-      },
-      room4.id
-    );
-
-    const room8 = newTree.addNode(
-      {
-        id: 'room8',
-        text: 'A crystal garden spreads before you. Gemstones of every color grow like plants, casting prismatic light across the walls.',
-      },
-      room5.id
-    );
-
-    const room9 = newTree.addNode(
-      {
-        id: 'room9',
-        text: 'You reach a circular chamber with a pit in the center. Strange chanting echoes from below. Something ancient stirs.',
-      },
-      room6.id
-    );
-
-    const room10 = newTree.addNode(
-      {
-        id: 'room10',
-        text: 'An altar room awaits. Ancient candles burn with an eternal flame. The air itself seems to vibrate with power.',
-      },
-      room7.id
-      );
-
     return newTree;
-  });
+};
 
-  const [currentNode, setCurrentNodeState] = useState<Node | null>(() => tree.root);
+const TreeProvider = ({ children }: TreeProviderProps) => {
+  const defaultTree = createDefaultTree();
+  const [tree, setTree] = useState<Tree>(defaultTree);
+  const [currentNode, setCurrentNodeState] = useState<Node | null>(defaultTree.root);
   const navigationSourceRef = useRef<'forward' | 'backtrack' | null>(null);
+
+  // Load tree from JSON file on mount
+  useEffect(() => {
+    const loadTreeFromJSON = async () => {
+      try {
+        const response = await fetch('/dungeon-tree.json');
+        if (response.ok) {
+          const jsonData = await response.json();
+          const loadedTree = Tree.fromJSON(jsonData);
+          setTree(loadedTree);
+          setCurrentNodeState(loadedTree.root);
+        } else {
+          console.warn('Failed to fetch dungeon-tree.json, using default tree');
+        }
+      } catch (error) {
+        console.warn('Failed to load tree from JSON, using default:', error);
+      }
+    };
+
+    loadTreeFromJSON();
+  }, []);
 
   const setCurrentNode = (node: Node | null) => {
     navigationSourceRef.current = 'forward';

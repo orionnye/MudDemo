@@ -1,0 +1,231 @@
+{
+  "rootId": "root",
+  "nodes": [
+    {
+      "id": "root",
+      "data": {
+        "id": "root",
+        "text": "Welcome to Mud Demo! You find yourself at the entrance of an ancient dungeon. The air is thick with mystery."
+      },
+      "parentId": null,
+      "childIds": ["room1"]
+    },
+    {
+      "id": "room1",
+      "data": {
+        "id": "room1",
+        "text": "You enter a dimly lit chamber. Torches flicker on the walls, casting eerie shadows. There are two corridors ahead."
+      },
+      "parentId": "root",
+      "childIds": ["room2", "room3", "room6"]
+    },
+    {
+      "id": "room2",
+      "data": {
+        "id": "room2",
+        "text": "You step into a treasure room! Gold coins glitter in the torchlight. However, the door behind you closes with a loud thud."
+      },
+      "parentId": "room1",
+      "childIds": ["room4"]
+    },
+    {
+      "id": "room3",
+      "data": {
+        "id": "room3",
+        "text": "You find yourself in a library filled with ancient tomes. The books seem to whisper secrets in an unknown language."
+      },
+      "parentId": "room1",
+      "childIds": ["room5", "room13"]
+    },
+    {
+      "id": "room4",
+      "data": {
+        "id": "room4",
+        "text": "A dusty armory lies before you. Old weapons line the walls, some rusted, others still gleaming in the dim light."
+      },
+      "parentId": "room2",
+      "childIds": ["room7", "room11"]
+    },
+    {
+      "id": "room5",
+      "data": {
+        "id": "room5",
+        "text": "You enter a magical workshop. Strange artifacts hum with energy on workbenches. A glowing crystal pulses in the center."
+      },
+      "parentId": "room3",
+      "childIds": ["room8"]
+    },
+    {
+      "id": "room6",
+      "data": {
+        "id": "room6",
+        "text": "A narrow passageway leads deeper underground. The walls are covered in ancient runes that seem to shift and move."
+      },
+      "parentId": "room1",
+      "childIds": ["room9", "room12"]
+    },
+    {
+      "id": "room7",
+      "data": {
+        "id": "room7",
+        "text": "You discover a hidden chamber with a massive stone door. Mysterious symbols are carved into its surface. It feels significant."
+      },
+      "parentId": "room4",
+      "childIds": ["room10"]
+    },
+    {
+      "id": "room8",
+      "data": {
+        "id": "room8",
+        "text": "A crystal garden spreads before you. Gemstones of every color grow like plants, casting prismatic light across the walls."
+      },
+      "parentId": "room5",
+      "childIds": ["room15"]
+    },
+    {
+      "id": "room9",
+      "data": {
+        "id": "room9",
+        "text": "You reach a circular chamber with a pit in the center. Strange chanting echoes from below. Something ancient stirs."
+      },
+      "parentId": "room6",
+      "childIds": []
+    },
+    {
+      "id": "room10",
+      "data": {
+        "id": "room10",
+        "text": "An altar room awaits. Ancient candles burn with an eternal flame. The air itself seems to vibrate with power."
+      },
+      "parentId": "room7",
+      "childIds": []
+    },
+    {
+      "id": "room11",
+      "data": {
+        "id": "room11",
+        "text": "A narrow corridor winds deeper into the earth. The walls are lined with office filing cabinets, their labels faded and illegible."
+      },
+      "parentId": "room4",
+      "childIds": ["room14"]
+    },
+    {
+      "id": "room12",
+      "data": {
+        "id": "room12",
+        "text": "You enter a conference room, but the table is made of stone. A projector displays ancient runes on the opposite wall."
+      },
+      "parentId": "room6",
+      "childIds": ["room18"]
+    },
+    {
+      "id": "room13",
+      "data": {
+        "id": "room13",
+        "text": "A break room with a coffee machine that never runs out. The coffee tastes like liquid gold, but something feels off."
+      },
+      "parentId": "room3",
+      "childIds": ["room16"]
+    },
+    {
+      "id": "room14",
+      "data": {
+        "id": "room14",
+        "text": "A server room filled with humming computers. The lights blink in patterns that almost seem to spell out words."
+      },
+      "parentId": "room11",
+      "childIds": ["room17"]
+    },
+    {
+      "id": "room15",
+      "data": {
+        "id": "room15",
+        "text": "An elevator shaft going down into darkness. The call button glows with an eerie blue light."
+      },
+      "parentId": "room8",
+      "childIds": ["room19"]
+    },
+    {
+      "id": "room16",
+      "data": {
+        "id": "room16",
+        "text": "A supply closet that seems larger on the inside. Brooms and mops hang on walls, but they appear to be made of bone."
+      },
+      "parentId": "room13",
+      "childIds": ["room21"]
+    },
+    {
+      "id": "room17",
+      "data": {
+        "id": "room17",
+        "text": "A cubicle farm stretching into infinity. Each desk has a nameplate, but the names shift when you look away."
+      },
+      "parentId": "room14",
+      "childIds": ["room20"]
+    },
+    {
+      "id": "room18",
+      "data": {
+        "id": "room18",
+        "text": "A water cooler surrounded by office plants. The plants seem to be watching you as you approach."
+      },
+      "parentId": "room12",
+      "childIds": ["room23"]
+    },
+    {
+      "id": "room19",
+      "data": {
+        "id": "room19",
+        "text": "A copy room where the photocopier makes copies of shadows. Your reflection in the machine smiles back."
+      },
+      "parentId": "room15",
+      "childIds": ["room22"]
+    },
+    {
+      "id": "room20",
+      "data": {
+        "id": "room20",
+        "text": "A reception desk made of polished obsidian. The receptionist's chair is empty, but you hear typing."
+      },
+      "parentId": "room17",
+      "childIds": ["room6"]
+    },
+    {
+      "id": "room21",
+      "data": {
+        "id": "room21",
+        "text": "A janitor's closet that leads to a network of maintenance tunnels. The tunnels branch in every direction."
+      },
+      "parentId": "room16",
+      "childIds": ["room24"]
+    },
+    {
+      "id": "room22",
+      "data": {
+        "id": "room22",
+        "text": "An executive office with a view into nothingness. The window shows swirling clouds of corporate paperwork."
+      },
+      "parentId": "room19",
+      "childIds": []
+    },
+    {
+      "id": "room23",
+      "data": {
+        "id": "room23",
+        "text": "A parking garage level, but instead of cars, there are stone chariots. A ticket machine dispenses ancient coins."
+      },
+      "parentId": "room18",
+      "childIds": []
+    },
+    {
+      "id": "room24",
+      "data": {
+        "id": "room24",
+        "text": "A security office monitoring hundreds of cameras. All the screens show the same room: the one you're in."
+      },
+      "parentId": "room21",
+      "childIds": []
+    }
+  ]
+}
+

@@ -110,5 +110,66 @@ export class Tree {
     }
     return path;
   }
+
+  toJSON(): Record<string, unknown> {
+    const nodesArray: Array<{ id: string; data: NodeData; parentId: string | null; childIds: string[] }> = [];
+    
+    // Collect all nodes including root
+    const allNodes = new Set<Node>();
+    if (this._root) {
+      allNodes.add(this._root);
+      this.traverse((node) => allNodes.add(node));
+    }
+    
+    // Convert all nodes to serializable format
+    allNodes.forEach((node) => {
+      nodesArray.push({
+        id: node.id,
+        data: node.data,
+        parentId: node.parent?.id || null,
+        childIds: node.children.map((child) => child.id),
+      });
+    });
+
+    return {
+      rootId: this._root?.id || null,
+      nodes: nodesArray,
+    };
+  }
+
+  static fromJSON(json: { rootId: string | null; nodes: Array<{ id: string; data: NodeData; parentId: string | null; childIds: string[] }> }): Tree {
+    const tree = new Tree();
+    
+    // First pass: create all nodes without relationships
+    const nodeMap = new Map<string, Node>();
+    json.nodes.forEach((nodeData) => {
+      const node = new Node(nodeData.data);
+      nodeMap.set(nodeData.id, node);
+    });
+
+    // Second pass: establish relationships
+    json.nodes.forEach((nodeData) => {
+      const node = nodeMap.get(nodeData.id);
+      if (!node) return;
+
+      // Set root
+      if (nodeData.id === json.rootId) {
+        (tree as any)._root = node;
+      }
+
+      // Add children relationships (this will automatically set parent)
+      nodeData.childIds.forEach((childId) => {
+        const child = nodeMap.get(childId);
+        if (child) {
+          node.addChild(child);
+        }
+      });
+
+      // Add to tree's node map
+      (tree as any)._nodes.set(node.id, node);
+    });
+
+    return tree;
+  }
 }
 

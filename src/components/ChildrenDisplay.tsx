@@ -22,7 +22,7 @@ const ChildrenDisplay = () => {
                 key={child.id}
                 className="children-display-item children-enter"
                 onClick={() => navigateToNode(child.id)}
-                style={{ animationDelay: `${index * 0.15}s` }}
+                style={{ animationDelay: `${1 + (index * 0.1)}s` }}
               >
                 {child.data.text}
               </button>
